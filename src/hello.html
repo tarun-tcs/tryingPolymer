@@ -1,0 +1,40 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<dom-module id="hello-world">
+    <template>
+        <style>
+            h1{
+                color: "red";
+            }
+        </style>
+        <h1>Game Of Thrones</h1>
+        <h2>{{firstName}} from house {{houseName}}</h2>
+        <h3>{{description}}</h3>
+        <p>{{lastName}}</p>
+        Favorite Character:-  <input type="text" value="{{favoriteCharacter::input}}">
+       <p> My favorite character is {{favoriteCharacter}}</p>
+       Edit House Name:-   <input type="text" value="{{houseName::input}}">
+    enter the link here :<input type="text" value="{{linkName::input}}">
+     Go to <a href$="{{linkName}}">{{linkName}}</a>
+    </template>
+</dom-module>
+<script>
+Polymer({
+    is:"hello-world",
+
+    properties:{
+        firstName:String,
+        houseName:String,
+        description:{
+            type:String,
+            computed:'getDescription(firstName,houseName)'
+        },
+        lastName:{
+            type:String,
+            value:"Lannisters"
+        }
+    },
+    getDescription:function(firstName,houseName){
+        return firstName +" I am from house"+houseName
+    }
+})
+</script>
